@@ -7,7 +7,7 @@ import gif
 
 # set plot style and resolution
 plt.style.use("seaborn")
-gif.options.matplotlib["dpi"] = 300
+gif.options.matplotlib["dpi"] = 100
 
 # load stock data
 df = yf.download("TSLA", start="2019-01-01", end="2021-12-31")
@@ -18,7 +18,6 @@ tsla_df = df[["Adj Close"]].resample("M").last()
 
 @gif.frame
 def plot_1(df, i):
-
     df = df.copy()
     df.iloc[i:] = np.nan
     ax = df.plot(title="Tesla stock price", legend=False, style="o--")
